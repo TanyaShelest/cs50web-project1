@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron">
+<h1>Search for a book</h1> 
+    <form action="/search" method="post">
+        <div class="form-group">
+            <input type="text" align="center" class="form-control" name="query" autofocus aria-describedby="bookHelp" placeholder="ISBN, Title or Author">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}

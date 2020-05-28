@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+<h1 align="center">Search Results</h1>
+<p class="text-muted">{{ search_count }} book(s) found</p>
+<div class="jumbotron">
+<div class="row" id="results">
+    {% for book in books %}
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="card border-primary">
+            <div class="card-body">
+                <h6 class="card-text">ISBN: {{ book.isbn }}</h6>
+                <h3 class="card-title"> {{ book.title }}</h3>
+                <h6 class="card-text">Author: {{ book.author }}</h6>
+                <h6 class="card-text">Year: {{ book.year }}</h6>
+            <div class="card-footer">
+                <a href="/book/{{ book.isbn }}" class="card-link">See more</a>
+            </div>
+        </div> 
+    </div>
+</div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

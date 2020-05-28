@@ -1,0 +1,17 @@
+
+.navbar .navbar-brand {
+    font-size: 30px;
+}
+
+.navbar a {
+    font-size: 20px;
+}
+main {
+    text-align: center;
+    
+}
+
+main .form-control {
+    display: inline-block;
+    width: auto;
+}

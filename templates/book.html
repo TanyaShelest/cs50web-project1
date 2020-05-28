@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book page
+{% endblock %}
+
+{% block main %}
+<h1 align="center">Book details</h1> 
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+<div class="card border-primary">
+    <div class="card-body" align="center">
+        <h2 class="card-title">{{ book.title }}</h2>
+        <h5 class="card-text"><u>ISBN</u>: {{ book.isbn }}</h5>
+        <h5 class="card-text"><u>Author</u>: {{ book.author }}</h5>
+        <h5 class="card-text"><u>Year</u>: {{ book.year }}</h5>
+    </div>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="card border-primary">
+    <div class="card-body" align="center">
+        <h2 class="card-title" align="center">Goodreads info:</h2>
+        <h5 class="card-text"><u>Average rating</u>: {{ book_goodreads.average_rating }}</h5>
+        <h5 class="card-text"><u>Number of ratings</u>: {{ book_goodreads.work_ratings_count }}</h5>
+        <br>
+    </div>
+</div>
+</div>
+</div>
+    <br>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <form class="form-border" method="post">
+                <h4 align="center">Leave your review:</h4>
+                <div class="form-group">
+                    <textarea type="text" class="form-control" name="review" autofocus placeholder="What do you think about this book?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rate the book from 1 to 5</label>
+                    <select class="form-control" name="rating">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                <div class="form-group">
+                <button class="btn btn-primary" class="form-control" type="submit" align="center">Submit</button>
+            </div>
+            </form>
+        </div>
+        
+        <div class="col-lg-8 col-md-8 col-sm-12" style="padding-left: 6rem;">
+        <h4 align="center">Reviews:</h4>
+        {% if reviews %}
+            {% for review in reviews %}
+                <h6 class="text-muted">{{ review.username }} said:</h6>
+                <blockquote class="blockquote">
+                    <p><small>"{{ review.review }}"</small></p>
+                </blockquote>
+                <div class="rating">     
+                    </div>
+                <p>{{ review.rating }} <span id="star">☆</span></p>
+            {% endfor %} 
+        {% else %}
+        <p class="text-muted" align="center">There are no reviews for this book yet</p>
+        
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
